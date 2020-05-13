@@ -12,5 +12,5 @@ This application built using Spring Boot + Thymleaf and when you run this applic
      
 ### Sample Output:
 
-![Screen Shot](https://raw.githubusercontent.com/idineshkrishnan/github-event-app/master/screen_shots/ss.png, "SS")
+![Screen Shot](https://raw.githubusercontent.com/idineshkrishnan/github-event-app/master/screen_shots/ss.png "SS")
 
