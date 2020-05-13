@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>GitHub Events Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-12">
+            <h1>GitHub Event Monitoring</h1>
+            <form action="#" th:action="@{/events}" th:object="${input}" method="post">
+                <div class="form-group row">
+                    <label for="owner" class="col-sm-2 col-form-label">Owner</label>
+                    <div class="col-sm-10">
+                        <input type="text" th:field="*{owner}" id="owner">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="repo" class="col-sm-2 col-form-label">Repository</label>
+                    <div class="col-sm-10">
+                        <input type="text" th:field="*{repo}" id="repo">
+                    </div>
+                </div>
+                <input class="btn btn-success" type="submit" value="Submit"/>
+                <input class="btn btn-danger" type="reset" value="Reset">
+            </form>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <h2>Event Details</h2>
+            <table border="1" style="width:300px" class="table">
+                <thead>
+                <tr>
+                    <th scope="col">User Id</th>
+                    <th scope="col">Picture</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">URL</th>
+                    <th scope="col">Event Id</th>
+                    <th scope="col">Event Type</th>
+                    <th scope="col">Created At</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="event : ${events}">
+                    <tr>
+                        <td th:text="${event.actorId}"></td>
+                        <td><img th:src="${event.actorPicture}" style="vertical-align: middle;width: 50px;height: 50px;border-radius: 50%" class="rounded-circle" alt="${event.actorName}"></td>
+                        <td th:text="${event.actorName}"></td>
+                        <td th:text="${event.actorUrl}"></td>
+                        <td th:text="${event.id}"></td>
+                        <td th:text="${event.type}"></td>
+                        <td th:text="${event.createdAt}"></td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
